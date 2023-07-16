@@ -7,6 +7,9 @@ package it.polito.tdp.genes;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.jgrapht.Graph;
+import org.jgrapht.graph.DefaultWeightedEdge;
+
 import it.polito.tdp.genes.model.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +20,7 @@ import javafx.scene.control.TextField;
 public class FXMLController {
 	
 	private Model model ;
+	Graph<Integer, DefaultWeightedEdge> graph;
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -57,6 +61,7 @@ public class FXMLController {
 
 	public void setModel(Model model) {
 		this.model = model ;
-		
+		txtResult.appendText("#VERTICI: "+this.model.creaGrafo().vertexSet().size());
+		txtResult.appendText("#ARCHI: "+this.model.creaGrafo().edgeSet().size());
 	}
 }
